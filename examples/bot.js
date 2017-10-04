@@ -4,30 +4,20 @@ const fs = require('fs');
 const path = require('path');
 const qrcode = require('qrcode-terminal');
 const request = require('request');
-const {WeChat} = require('..');
+const WeChat = require('..').WeChat;
 
 const FIXTURES = path.resolve(__dirname, '..', 'fixtures');
 const MEDIA = path.resolve(__dirname, '..', 'media');
 
-let bot;
-/**
- * 尝试获取本地登录数据，免扫码
- * 这里演示从本地文件中获取数据
- */
-try {
-  bot = new WeChat(require('./session.json'))
-} catch (e) {
-  bot = new WeChat()
-}
+const bot = new WeChat();
+
 /**
  * 启动机器人
  */
-if (bot.PROP.uin) {
-  // 存在登录数据时，可以随时调用restart进行重启
-  bot.restart()
-} else {
-  bot.start()
-}
+const session = fs.existsSync('./session.json') ? require('./session.json') : null;
+bot.start(session).catch(() => bot.start());
+
+
 /**
  * uuid事件，参数为uuid，根据uuid生成二维码
  */

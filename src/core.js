@@ -1,8 +1,8 @@
-import path from 'path'
-import bl from 'bl'
-import _debug from 'debug'
-import FormData from 'form-data'
-import mime from 'mime'
+import path from 'path';
+import bl from 'bl';
+import _debug from 'debug';
+import FormData from 'form-data';
+import mime from 'mime';
 import {
   getCONF,
   Request,
@@ -10,13 +10,17 @@ import {
   assert,
   getClientMsgId,
   getDeviceID
-} from './util'
+} from './util';
 
 const debug = _debug('core');
 
 export default class WeChatCore {
 
-  constructor(data) {
+  constructor(session) {
+    this.reset(session);
+  }
+
+  reset(session) {
     this.PROP = {
       uuid: '',
       uin: '',
@@ -32,13 +36,14 @@ export default class WeChatCore {
     this.CONF = getCONF();
     this.COOKIE = {};
     this.user = {};
-    if (data) {
-      this.session = data
+
+    if (session) {
+      this.session = session;
     }
 
     this.request = new Request({
       Cookie: this.COOKIE
-    })
+    });
   }
 
   get session() {
@@ -173,6 +178,7 @@ export default class WeChatCore {
       })
     }).catch(err => {
       debug(err);
+      err.code = 'INIT_FAIL';
       err.tips = '微信初始化失败';
       throw err
     })

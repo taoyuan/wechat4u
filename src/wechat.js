@@ -22,8 +22,8 @@ if (!isStandardBrowserEnv) {
 
 class WeChat extends WeChatCore {
 
-  constructor(data) {
-    super(data);
+  constructor(session) {
+    super(session);
     _.extend(this, new EventEmitter());
     this.state = this.CONF.STATE.init;
     this.contacts = {}; // 所有联系人
@@ -33,7 +33,8 @@ class WeChat extends WeChatCore {
     this.syncPollingId = 0;
     this.syncErrorCount = 0;
     this.checkPollingId = 0;
-    this.retryPollingId = 0
+    this.retryPollingId = 0;
+
   }
 
   get friendList() {
@@ -185,19 +186,7 @@ class WeChat extends WeChatCore {
       })
   }
 
-  start() {
-    debug('启动中...');
-    return this._login()
-      .then(() => this._init())
-      .catch(err => {
-        debug(err);
-        this.emit('error', err);
-        this.stop()
-      })
-  }
-
-  restart() {
-    debug('重启中...');
+  _restart() {
     return this._init()
       .catch(err => {
         if (err.response) {
@@ -213,11 +202,39 @@ class WeChat extends WeChatCore {
               this.updateContacts(data.ContactList)
             })
         }
-      }).catch(err => {
+      });
+  }
+
+  start(session) {
+    this.reset(session);
+    if (session) {
+      debug('恢复中...');
+      return this._restart().catch(err => {
         debug(err);
         this.emit('error', err);
-        this.stop()
-      })
+        this.stop();
+        // try to start without session
+        return this.start()
+      });
+    }
+    debug('启动中...');
+    return this._login()
+      .then(() => this._init())
+      .catch(err => {
+        debug(err);
+        this.emit('error', err);
+        this.stop();
+      });
+  }
+
+  restart() {
+    debug('恢复中...');
+    return this._restart()
+      .catch(err => {
+        debug(err);
+        this.emit('error', err);
+        this.stop();
+      });
   }
 
   stop() {

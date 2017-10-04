@@ -1,31 +1,22 @@
 'use strict';
+
 require('babel-register');
+
 const fs = require('fs');
 const path = require('path');
 const qrcode = require('qrcode-terminal');
-const {WeChat} = require('.');
+const WeChat = require('.').WeChat;
 
 const MEDIA = path.resolve(__dirname, 'media');
 
-let bot;
-/**
- * 尝试获取本地登录数据，免扫码
- * 这里演示从本地文件中获取数据
- */
-try {
-  bot = new WeChat(require('./session.json'))
-} catch (e) {
-  bot = new WeChat()
-}
+const bot = new WeChat();
+
 /**
  * 启动机器人
  */
-if (bot.PROP.uin) {
-  // 存在登录数据时，可以随时调用restart进行重启
-  bot.restart()
-} else {
-  bot.start()
-}
+const session = fs.existsSync('./session.json') ? require('./session.json') : null;
+bot.start(session);
+
 /**
  * uuid事件，参数为uuid，根据uuid生成二维码
  */
@@ -55,7 +46,7 @@ bot.on('login', () => {
 bot.on('logout', () => {
   console.log('登出成功');
   // 清除数据
-  fs.unlinkSync('./sync-data.json')
+  fs.unlinkSync('./session.json');
 });
 /**
  * 联系人更新事件，参数为被更新的联系人列表
