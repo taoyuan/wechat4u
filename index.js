@@ -1,9 +1,11 @@
 /*!
  * wechatr.js
- * Copyright(c) 2016-2017 nodeWechat
+ * Copyright(c) 2016-2017 nodeWeChat
  * MIT Licensed
  */
 
-'use strict'
+'use strict';
 
-module.exports = require('./src/wechat')
+const WeChat = require('./src/wechat');
+
+exports.WeChat = WeChat;

@@ -1,24 +1,12 @@
 # wechatr.js
 
-![](http://7xr8pm.com1.z0.glb.clouddn.com/nodeWechat.png) [![npm version](https://img.shields.io/npm/v/wechatr.svg)](https://www.npmjs.org/package/wechatr) [![wechat group](https://img.shields.io/badge/wechat-group-brightgreen.svg)](http://www.qr-code-generator.com/phpqrcode/getCode.php?cht=qr&chl=http%3A%2F%2Fweixin.qq.com%2Fg%2FA1zJ47b19KtgMnAx&chs=180x180&choe=UTF-8&chld=L|0)
-
-## Have A Try ?
-
-- 测试服务器
-
-  [wechatr.duapp.com](http://wechatr.duapp.com)，具有自动回复（文本，表情），监控和群发等功能
-
-- 测试微信机器人 (暂时被微信封杀)
-
-  ![微信号：abotofwechat4u](https://raw.githubusercontent.com/taoyuan/wechatr/master/bot-qrcode.jpg)
-
-  扫描二维码，开启激情果撩，验证消息：**我爱wechat4u**
+> 微信 wechat web 网页版接口的 JavaScript 实现，兼容Node和浏览器，微信机器人.
 
 ## Announcing wechatr v0.7.5
 
 ### Features
 
-- 导出和导入保持微信登录的必要数据 bot.botData ([#160](https://github.com/taoyuan/wechatr/pull/160))
+- 导出和导入保持微信登录的必要数据 bot.session ([#160](https://github.com/taoyuan/wechatr/pull/160))
 - 修改联系人备注 bot.updateRemarkName(UserName, RemarkName) ([#121](https://github.com/taoyuan/wechatr/pull/121))
 - 修改群名 bot.updateChatRoomName(ChatRoomUserName, NewName) ([#168](https://github.com/taoyuan/wechatr/pull/168))
 - 转发消息 bot.forwardMsg(msg, toUserName)
@@ -40,11 +28,11 @@ npm install --save wechatr@latest
 ```
 
 ```javascript
-const Wechat = require('wechatr')
-let bot = new Wechat()
+const WeChat = require('wechatr')
+let bot = new WeChat()
 bot.start()
 // 或使用核心API
-// const WechatCore = require('wechatr/lib/core')
+// const WeChatCore = require('wechatr/lib/core')
 ```
 
 ## 开发测试
@@ -61,21 +49,21 @@ npm run compile // babel编译
 
 `node run-core.js`
 
-逻辑见[代码](https://github.com/taoyuan/wechatr/blob/master/run-core.js)，简明完整，一定要看
+逻辑见[代码](https://github.com/taoyuan/wechatr/blob/master/examples/bot.js)，简明完整，一定要看
 
-## 实例化Wechat类
+## 实例化WeChat类
 
 ```javascript
-let bot = new Wechat([botData])
+let bot = new WeChat([session])
 ```
 
-若传入`botData`，则使用此机器人信息，重新开始之前的同步
+若传入`session`，则使用此机器人信息，重新开始之前的同步
 
 ## 实例属性
 
 所有属性均只读
 
-### bot.botData
+### bot.session
 
 可导出的实例基本信息，在下次new新bot时，可以填入此信息，重新同步
 
