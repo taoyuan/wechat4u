@@ -1,8 +1,11 @@
 {
   "name": "wechatr",
-  "version": "0.7.6",
-  "description": "web wechat lib for user",
+  "version": "1.0.0",
+  "description": "A WeChat library based on the web api",
   "main": "index.js",
+  "engines": {
+    "node": ">=6.0.0"
+  },
   "scripts": {
     "compile": "babel src -d lib -s",
     "prepublish": "npm run compile",
@@ -32,6 +35,7 @@
   "homepage": "https://github.com/taoyuan/wechatr#readme",
   "devDependencies": {
     "babel-cli": "^6.14.0",
+    "babel-eslint": "^8.0.1",
     "babel-preset-env": "^1.2.1",
     "babel-register": "^6.16.3",
     "chai": "^3.5.0",

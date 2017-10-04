@@ -415,7 +415,7 @@ export default class WeChatCore {
         method: 'POST',
         url: this.CONF.API_webwxlogout,
         params: params
-      }).then(res => {
+      }).then(() => {
         return '登出成功'
       }).catch(err => {
         debug(err);
@@ -509,8 +509,8 @@ export default class WeChatCore {
     return Promise.resolve().then(() => {
       let name, type, size, ext, mediatype, data;
       return new Promise((resolve, reject) => {
-        if ((typeof (File) !== 'undefined' && file.constructor == File) ||
-          (typeof (Blob) !== 'undefined' && file.constructor == Blob)) {
+        if ((typeof (File) !== 'undefined' && file.constructor === File) ||
+          (typeof (Blob) !== 'undefined' && file.constructor === Blob)) {
           name = file.name || 'file';
           type = file.type;
           size = file.size;
@@ -776,7 +776,7 @@ export default class WeChatCore {
           'ClientMsgId': clientMsgId
         }
       };
-      let url, pm;
+      let url;
       switch (msg.MsgType) {
         case this.CONF.MSGTYPE_TEXT:
           url = this.CONF.API_webwxsendmsg;
