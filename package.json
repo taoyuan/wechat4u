@@ -1,5 +1,5 @@
 {
-  "name": "wechat4u",
+  "name": "wechatr",
   "version": "0.7.6",
   "description": "web wechat lib for user",
   "main": "lib/wechat.js",
@@ -22,14 +22,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nodeWechat/wechat4u.git"
+    "url": "git+https://github.com/taoyuan/wechatr.git"
   },
   "author": "nodeWechat",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nodeWechat/wechat4u/issues"
+    "url": "https://github.com/taoyuan/wechatr/issues"
   },
-  "homepage": "https://github.com/nodeWechat/wechat4u#readme",
+  "homepage": "https://github.com/taoyuan/wechatr#readme",
   "devDependencies": {
     "babel-cli": "^6.14.0",
     "babel-preset-env": "^1.2.1",

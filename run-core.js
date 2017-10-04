@@ -114,7 +114,7 @@ bot.on('login', () => {
    * 发送图片
    */
   bot.sendMsg({
-    file: request('https://raw.githubusercontent.com/nodeWechat/wechat4u/master/bot-qrcode.jpg'),
+    file: request('https://raw.githubusercontent.com/taoyuan/wechatr/master/bot-qrcode.jpg'),
     filename: 'bot-qrcode.jpg'
   }, ToUserName)
     .catch(err => {

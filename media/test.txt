@@ -1,16 +1,16 @@
-# wechat4u.js
+# wechatr.js
 
 ![](http://7xr8pm.com1.z0.glb.clouddn.com/nodeWechat.png)
 
-wechat4u@0.4.0更新了大量API，增强了稳定性
+wechatr@0.4.0更新了大量API，增强了稳定性
 
-测试服务器[wechat4u.duapp.com](http://wechat4u.duapp.com)
+测试服务器[wechatr.duapp.com](http://wechatr.duapp.com)
 <small>具有文本表情自动回复，监控，群发功能</small>
 
 ## 安装使用
 
 ```
-npm install --save wechat4u@latest
+npm install --save wechatr@latest
 ```
 
 ```javascript
@@ -24,8 +24,8 @@ bot.start()
 ## 开发测试
 
 ```
-git clone https://github.com/nodeWechat/wechat4u.git
-cd wechat4u
+git clone https://github.com/taoyuan/wechatr.git
+cd wechatr
 npm install
 npm run example
 npm run core
@@ -239,7 +239,7 @@ contact.getDisplayName()
 contact.canSearch(keyword)
 ```
 
-此外，wechat4u 在实例上提供 Contact 作为联系人的通用接口，扩展以下属性：
+此外，wechatr 在实例上提供 Contact 作为联系人的通用接口，扩展以下属性：
 
 ```javascript
 wechat.Contact.isRoomContact()

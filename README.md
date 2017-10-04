@@ -1,26 +1,26 @@
-# wechat4u.js
+# wechatr.js
 
-![](http://7xr8pm.com1.z0.glb.clouddn.com/nodeWechat.png) [![npm version](https://img.shields.io/npm/v/wechat4u.svg)](https://www.npmjs.org/package/wechat4u) [![wechat group](https://img.shields.io/badge/wechat-group-brightgreen.svg)](http://www.qr-code-generator.com/phpqrcode/getCode.php?cht=qr&chl=http%3A%2F%2Fweixin.qq.com%2Fg%2FA1zJ47b19KtgMnAx&chs=180x180&choe=UTF-8&chld=L|0)
+![](http://7xr8pm.com1.z0.glb.clouddn.com/nodeWechat.png) [![npm version](https://img.shields.io/npm/v/wechatr.svg)](https://www.npmjs.org/package/wechatr) [![wechat group](https://img.shields.io/badge/wechat-group-brightgreen.svg)](http://www.qr-code-generator.com/phpqrcode/getCode.php?cht=qr&chl=http%3A%2F%2Fweixin.qq.com%2Fg%2FA1zJ47b19KtgMnAx&chs=180x180&choe=UTF-8&chld=L|0)
 
 ## Have A Try ?
 
 - 测试服务器
 
-  [wechat4u.duapp.com](http://wechat4u.duapp.com)，具有自动回复（文本，表情），监控和群发等功能
+  [wechatr.duapp.com](http://wechatr.duapp.com)，具有自动回复（文本，表情），监控和群发等功能
 
 - 测试微信机器人 (暂时被微信封杀)
 
-  ![微信号：abotofwechat4u](https://raw.githubusercontent.com/nodeWechat/wechat4u/master/bot-qrcode.jpg)
+  ![微信号：abotofwechat4u](https://raw.githubusercontent.com/taoyuan/wechatr/master/bot-qrcode.jpg)
 
   扫描二维码，开启激情果撩，验证消息：**我爱wechat4u**
 
-## Announcing wechat4u v0.7.5
+## Announcing wechatr v0.7.5
 
 ### Features
 
-- 导出和导入保持微信登录的必要数据 bot.botData ([#160](https://github.com/nodeWechat/wechat4u/pull/160))
-- 修改联系人备注 bot.updateRemarkName(UserName, RemarkName) ([#121](https://github.com/nodeWechat/wechat4u/pull/121))
-- 修改群名 bot.updateChatRoomName(ChatRoomUserName, NewName) ([#168](https://github.com/nodeWechat/wechat4u/pull/168))
+- 导出和导入保持微信登录的必要数据 bot.botData ([#160](https://github.com/taoyuan/wechatr/pull/160))
+- 修改联系人备注 bot.updateRemarkName(UserName, RemarkName) ([#121](https://github.com/taoyuan/wechatr/pull/121))
+- 修改群名 bot.updateChatRoomName(ChatRoomUserName, NewName) ([#168](https://github.com/taoyuan/wechatr/pull/168))
 - 转发消息 bot.forwardMsg(msg, toUserName)
 - 撤回消息 bot.revokeMsg(MsgID, toUserName)
 
@@ -36,22 +36,22 @@
 ## 安装使用
 
 ```
-npm install --save wechat4u@latest
+npm install --save wechatr@latest
 ```
 
 ```javascript
-const Wechat = require('wechat4u')
+const Wechat = require('wechatr')
 let bot = new Wechat()
 bot.start()
 // 或使用核心API
-// const WechatCore = require('wechat4u/lib/core')
+// const WechatCore = require('wechatr/lib/core')
 ```
 
 ## 开发测试
 
 ```shell
-git clone https://github.com/nodeWechat/wechat4u.git
-cd wechat4u
+git clone https://github.com/taoyuan/wechatr.git
+cd wechatr
 npm install
 npm run core // 命令行模式
 npm run compile // babel编译
@@ -61,7 +61,7 @@ npm run compile // babel编译
 
 `node run-core.js`
 
-逻辑见[代码](https://github.com/nodeWechat/wechat4u/blob/master/run-core.js)，简明完整，一定要看
+逻辑见[代码](https://github.com/taoyuan/wechatr/blob/master/run-core.js)，简明完整，一定要看
 
 ## 实例化Wechat类
 
@@ -249,7 +249,7 @@ bot.uploadMedia(fs.createReadStream('test.png'))
 
 ```javascript
 bot.sendMsg({
-    file: request('https://raw.githubusercontent.com/nodeWechat/wechat4u/master/bot-qrcode.jpg'),
+    file: request('https://raw.githubusercontent.com/taoyuan/wechatr/master/bot-qrcode.jpg'),
     filename: 'bot-qrcode.jpg'
   }, ToUserName)
   .catch(err => {
@@ -442,7 +442,7 @@ contact.getDisplayName()
 contact.canSearch(keyword)
 ```
 
-此外，wechat4u 在实例上提供 Contact 作为联系人的通用接口，扩展以下属性：
+此外，wechatr 在实例上提供 Contact 作为联系人的通用接口，扩展以下属性：
 
 ```javascript
 wechat.Contact.isRoomContact()
