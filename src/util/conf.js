@@ -188,7 +188,7 @@ export function getCONF(host) {
   let conf = {};
   conf.origin = origin;
   conf.baseUri = origin + '/cgi-bin/mmwebwx-bin';
-  conf.API_userlogin = 'https://' + loginUrl + '/l/';
+  conf.API_userlogin = 'https://login.weixin.qq.com/l/';
   conf.API_jsLogin = 'https://' + loginUrl + '/jslogin?appid=wx782c26e4c19acffb&fun=new&lang=zh-CN';
   conf.API_login = 'https://' + loginUrl + '/cgi-bin/mmwebwx-bin/login';
   conf.API_synccheck = 'https://' + pushUrl + '/cgi-bin/mmwebwx-bin/synccheck';
