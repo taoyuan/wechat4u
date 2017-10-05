@@ -5,7 +5,7 @@ require('babel-register');
 const fs = require('fs');
 const path = require('path');
 const qrcode = require('qrcode-terminal');
-const WeChat = require('.').WeChat;
+const WeChat = require('./src/wechat';
 
 const MEDIA = path.resolve(__dirname, 'media');
 

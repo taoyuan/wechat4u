@@ -1,8 +1,8 @@
 # wechatr.js
 
-> 微信 wechat web 网页版接口的 JavaScript 实现，兼容Node和浏览器，微信机器人.
+> 微信 WeChat web 网页版接口的 JavaScript 实现，兼容Node和浏览器，微信机器人.
 
-## Announcing wechatr v0.7.5
+## Announcing wechatr
 
 ### Features
 

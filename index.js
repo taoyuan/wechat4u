@@ -6,6 +6,6 @@
 
 'use strict';
 
-const WeChat = require('./src/wechat');
+const WeChat = require('./lib/wechat');
 
 exports.WeChat = WeChat;

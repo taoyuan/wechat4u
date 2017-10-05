@@ -176,7 +176,7 @@ class WeChat extends WeChatCore {
     return this.getUUID()
       .then(uuid => {
         debug('getUUID: ', uuid);
-        this.emit('uuid', uuid);
+        this.emit('uuid', uuid, this.CONF.API_userlogin + uuid);
         this.state = this.CONF.STATE.uuid;
         return checkLogin()
       })

@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 export const CONF = {
   LANG: 'zh-CN',
@@ -165,61 +165,62 @@ export const CONF = {
     'gh_22b87fa7cb3c', 'officialaccounts', 'notification_messages', 'wxid_novlwrv3lqwv11',
     'gh_22b87fa7cb3c', 'wxitil', 'userexperience_alarm', 'notification_messages'
   ]
-}
+};
 
-export function getCONF (host) {
-  host = host || 'wx.qq.com'
-  let origin = `https://${host}`
-  let loginUrl = 'login.weixin.qq.com'
-  let fileUrl = 'file.wx.qq.com'
-  let pushUrl = 'webpush.weixin.qq.com'
+export function getCONF(host) {
+  host = host || 'wx.qq.com';
+  let origin = `https://${host}`;
+  let loginUrl = 'login.weixin.qq.com';
+  let fileUrl = 'file.wx.qq.com';
+  let pushUrl = 'webpush.weixin.qq.com';
   host.indexOf('wx2.qq.com') > -1 ? (loginUrl = 'login.wx2.qq.com', fileUrl = 'file.wx2.qq.com',
     pushUrl =
-    'webpush.wx2.qq.com') : host.indexOf('wx8.qq.com') > -1 ? (loginUrl = 'login.wx8.qq.com',
+      'webpush.wx2.qq.com') : host.indexOf('wx8.qq.com') > -1 ? (loginUrl = 'login.wx8.qq.com',
     fileUrl =
-    'file.wx8.qq.com', pushUrl = 'webpush.wx8.qq.com') : host.indexOf('qq.com') > -1 ? (
+      'file.wx8.qq.com', pushUrl = 'webpush.wx8.qq.com') : host.indexOf('qq.com') > -1 ? (
     loginUrl =
-    'login.wx.qq.com', fileUrl = 'file.wx.qq.com', pushUrl = 'webpush.wx.qq.com') : host.indexOf(
+      'login.wx.qq.com', fileUrl = 'file.wx.qq.com', pushUrl = 'webpush.wx.qq.com') : host.indexOf(
     'web2.wechat.com') > -1 ? (loginUrl = 'login.web2.wechat.com', fileUrl =
     'file.web2.wechat.com', pushUrl =
     'webpush.web2.wechat.com') : host.indexOf('wechat.com') > -1 && (loginUrl =
-    'login.web.wechat.com', fileUrl = 'file.web.wechat.com', pushUrl = 'webpush.web.wechat.com')
+    'login.web.wechat.com', fileUrl = 'file.web.wechat.com', pushUrl = 'webpush.web.wechat.com');
 
-  let conf = {}
-  conf.origin = origin
-  conf.baseUri = origin + '/cgi-bin/mmwebwx-bin'
-  conf.API_jsLogin = 'https://' + loginUrl + '/jslogin?appid=wx782c26e4c19acffb&fun=new&lang=zh-CN'
-  conf.API_login = 'https://' + loginUrl + '/cgi-bin/mmwebwx-bin/login'
-  conf.API_synccheck = 'https://' + pushUrl + '/cgi-bin/mmwebwx-bin/synccheck'
-  conf.API_webwxdownloadmedia = 'https://' + fileUrl + '/cgi-bin/mmwebwx-bin/webwxgetmedia'
-  conf.API_webwxuploadmedia = 'https://' + fileUrl + '/cgi-bin/mmwebwx-bin/webwxuploadmedia'
-  conf.API_webwxpreview = origin + '/cgi-bin/mmwebwx-bin/webwxpreview'
-  conf.API_webwxinit = origin + '/cgi-bin/mmwebwx-bin/webwxinit'
-  conf.API_webwxgetcontact = origin + '/cgi-bin/mmwebwx-bin/webwxgetcontact'
-  conf.API_webwxsync = origin + '/cgi-bin/mmwebwx-bin/webwxsync'
-  conf.API_webwxbatchgetcontact = origin + '/cgi-bin/mmwebwx-bin/webwxbatchgetcontact'
-  conf.API_webwxgeticon = origin + '/cgi-bin/mmwebwx-bin/webwxgeticon'
-  conf.API_webwxsendmsg = origin + '/cgi-bin/mmwebwx-bin/webwxsendmsg'
-  conf.API_webwxsendmsgimg = origin + '/cgi-bin/mmwebwx-bin/webwxsendmsgimg'
-  conf.API_webwxsendmsgvedio = origin + '/cgi-bin/mmwebwx-bin/webwxsendvideomsg'
-  conf.API_webwxsendemoticon = origin + '/cgi-bin/mmwebwx-bin/webwxsendemoticon'
-  conf.API_webwxsendappmsg = origin + '/cgi-bin/mmwebwx-bin/webwxsendappmsg'
-  conf.API_webwxgetheadimg = origin + '/cgi-bin/mmwebwx-bin/webwxgetheadimg'
-  conf.API_webwxgetmsgimg = origin + '/cgi-bin/mmwebwx-bin/webwxgetmsgimg'
-  conf.API_webwxgetmedia = origin + '/cgi-bin/mmwebwx-bin/webwxgetmedia'
-  conf.API_webwxgetvideo = origin + '/cgi-bin/mmwebwx-bin/webwxgetvideo'
-  conf.API_webwxlogout = origin + '/cgi-bin/mmwebwx-bin/webwxlogout'
-  conf.API_webwxgetvoice = origin + '/cgi-bin/mmwebwx-bin/webwxgetvoice'
-  conf.API_webwxupdatechatroom = origin + '/cgi-bin/mmwebwx-bin/webwxupdatechatroom'
-  conf.API_webwxcreatechatroom = origin + '/cgi-bin/mmwebwx-bin/webwxcreatechatroom'
-  conf.API_webwxstatusnotify = origin + '/cgi-bin/mmwebwx-bin/webwxstatusnotify'
-  conf.API_webwxcheckurl = origin + '/cgi-bin/mmwebwx-bin/webwxcheckurl'
-  conf.API_webwxverifyuser = origin + '/cgi-bin/mmwebwx-bin/webwxverifyuser'
-  conf.API_webwxfeedback = origin + '/cgi-bin/mmwebwx-bin/webwxsendfeedback'
-  conf.API_webwxreport = origin + '/cgi-bin/mmwebwx-bin/webwxstatreport'
-  conf.API_webwxsearch = origin + '/cgi-bin/mmwebwx-bin/webwxsearchcontact'
-  conf.API_webwxoplog = origin + '/cgi-bin/mmwebwx-bin/webwxoplog'
-  conf.API_checkupload = origin + '/cgi-bin/mmwebwx-bin/webwxcheckupload'
-  conf.API_webwxrevokemsg = origin + '/cgi-bin/mmwebwx-bin/webwxrevokemsg'
+  let conf = {};
+  conf.origin = origin;
+  conf.baseUri = origin + '/cgi-bin/mmwebwx-bin';
+  conf.API_userlogin = 'https://' + loginUrl + '/l/';
+  conf.API_jsLogin = 'https://' + loginUrl + '/jslogin?appid=wx782c26e4c19acffb&fun=new&lang=zh-CN';
+  conf.API_login = 'https://' + loginUrl + '/cgi-bin/mmwebwx-bin/login';
+  conf.API_synccheck = 'https://' + pushUrl + '/cgi-bin/mmwebwx-bin/synccheck';
+  conf.API_webwxdownloadmedia = 'https://' + fileUrl + '/cgi-bin/mmwebwx-bin/webwxgetmedia';
+  conf.API_webwxuploadmedia = 'https://' + fileUrl + '/cgi-bin/mmwebwx-bin/webwxuploadmedia';
+  conf.API_webwxpreview = origin + '/cgi-bin/mmwebwx-bin/webwxpreview';
+  conf.API_webwxinit = origin + '/cgi-bin/mmwebwx-bin/webwxinit';
+  conf.API_webwxgetcontact = origin + '/cgi-bin/mmwebwx-bin/webwxgetcontact';
+  conf.API_webwxsync = origin + '/cgi-bin/mmwebwx-bin/webwxsync';
+  conf.API_webwxbatchgetcontact = origin + '/cgi-bin/mmwebwx-bin/webwxbatchgetcontact';
+  conf.API_webwxgeticon = origin + '/cgi-bin/mmwebwx-bin/webwxgeticon';
+  conf.API_webwxsendmsg = origin + '/cgi-bin/mmwebwx-bin/webwxsendmsg';
+  conf.API_webwxsendmsgimg = origin + '/cgi-bin/mmwebwx-bin/webwxsendmsgimg';
+  conf.API_webwxsendmsgvedio = origin + '/cgi-bin/mmwebwx-bin/webwxsendvideomsg';
+  conf.API_webwxsendemoticon = origin + '/cgi-bin/mmwebwx-bin/webwxsendemoticon';
+  conf.API_webwxsendappmsg = origin + '/cgi-bin/mmwebwx-bin/webwxsendappmsg';
+  conf.API_webwxgetheadimg = origin + '/cgi-bin/mmwebwx-bin/webwxgetheadimg';
+  conf.API_webwxgetmsgimg = origin + '/cgi-bin/mmwebwx-bin/webwxgetmsgimg';
+  conf.API_webwxgetmedia = origin + '/cgi-bin/mmwebwx-bin/webwxgetmedia';
+  conf.API_webwxgetvideo = origin + '/cgi-bin/mmwebwx-bin/webwxgetvideo';
+  conf.API_webwxlogout = origin + '/cgi-bin/mmwebwx-bin/webwxlogout';
+  conf.API_webwxgetvoice = origin + '/cgi-bin/mmwebwx-bin/webwxgetvoice';
+  conf.API_webwxupdatechatroom = origin + '/cgi-bin/mmwebwx-bin/webwxupdatechatroom';
+  conf.API_webwxcreatechatroom = origin + '/cgi-bin/mmwebwx-bin/webwxcreatechatroom';
+  conf.API_webwxstatusnotify = origin + '/cgi-bin/mmwebwx-bin/webwxstatusnotify';
+  conf.API_webwxcheckurl = origin + '/cgi-bin/mmwebwx-bin/webwxcheckurl';
+  conf.API_webwxverifyuser = origin + '/cgi-bin/mmwebwx-bin/webwxverifyuser';
+  conf.API_webwxfeedback = origin + '/cgi-bin/mmwebwx-bin/webwxsendfeedback';
+  conf.API_webwxreport = origin + '/cgi-bin/mmwebwx-bin/webwxstatreport';
+  conf.API_webwxsearch = origin + '/cgi-bin/mmwebwx-bin/webwxsearchcontact';
+  conf.API_webwxoplog = origin + '/cgi-bin/mmwebwx-bin/webwxoplog';
+  conf.API_checkupload = origin + '/cgi-bin/mmwebwx-bin/webwxcheckupload';
+  conf.API_webwxrevokemsg = origin + '/cgi-bin/mmwebwx-bin/webwxrevokemsg';
   return Object.assign(conf, CONF)
 }
