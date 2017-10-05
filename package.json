@@ -1,6 +1,6 @@
 {
   "name": "wechatr",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A WeChat library based on the web api",
   "main": "index.js",
   "engines": {
