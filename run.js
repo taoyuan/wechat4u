@@ -52,7 +52,8 @@ bot.on('logout', () => {
  * 联系人更新事件，参数为被更新的联系人列表
  */
 bot.on('contacts-updated', contacts => {
-  console.log('联系人数量：', Object.keys(bot.contacts).length)
+  console.log(contacts);
+  console.log('联系人数量：', Object.keys(bot.contacts).length);
 });
 /**
  * 错误事件，参数一般为Error对象

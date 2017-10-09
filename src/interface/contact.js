@@ -2,7 +2,7 @@ import {
   convertEmoji,
   getCONF
 } from '../util'
-const CONF = getCONF()
+const CONF = getCONF();
 
 /* Contact Object Example
 {
@@ -39,7 +39,7 @@ const CONF = getCONF()
 }
 */
 export function getUserByUserName (memberList, UserName) {
-  if (!memberList.length) return null
+  if (!memberList.length) return null;
 
   return memberList.find(contact => contact.UserName === UserName)
 }
@@ -73,13 +73,13 @@ export function isPublicContact (contact) {
 const contactProto = {
   init: function (instance) {
     // 纠正错误以后保持兼容
-    this.OriginalNickName = this.OrignalNickName = this.NickName
-    this.OriginalRemarkName = this.OrignalRemarkName = this.RemarkName
-    this.OriginalDisplayName = this.OrignalDisplayName = this.DisplayName
-    this.NickName = convertEmoji(this.NickName)
-    this.RemarkName = convertEmoji(this.RemarkName)
-    this.DisplayName = convertEmoji(this.DisplayName)
-    this.isSelf = this.UserName === instance.user.UserName
+    this.OriginalNickName = this.OrignalNickName = this.NickName;
+    this.OriginalRemarkName = this.OrignalRemarkName = this.RemarkName;
+    this.OriginalDisplayName = this.OrignalDisplayName = this.DisplayName;
+    this.NickName = convertEmoji(this.NickName);
+    this.RemarkName = convertEmoji(this.RemarkName);
+    this.DisplayName = convertEmoji(this.DisplayName);
+    this.isSelf = this.UserName === instance.user.UserName;
 
     return this
   },
@@ -87,10 +87,10 @@ const contactProto = {
     return getDisplayName(this)
   },
   canSearch: function (keyword) {
-    if (!keyword) return false
-    keyword = keyword.toUpperCase()
+    if (!keyword) return false;
+    keyword = keyword.toUpperCase();
 
-    let isSatisfy = key => (key || '').toUpperCase().indexOf(keyword) >= 0
+    let isSatisfy = key => (key || '').toUpperCase().indexOf(keyword) >= 0;
     return (
       isSatisfy(this.RemarkName) ||
       isSatisfy(this.RemarkPYQuanPin) ||
@@ -100,19 +100,19 @@ const contactProto = {
       isSatisfy(this.KeyWord)
     )
   }
-}
+};
 
 export default function ContactFactory (instance) {
   return {
     extend: function (contactObj) {
-      contactObj = Object.setPrototypeOf(contactObj, contactProto)
+      contactObj = Object.setPrototypeOf(contactObj, contactProto);
       return contactObj.init(instance)
     },
     getUserByUserName: function (UserName) {
       return instance.contacts[UserName]
     },
     getSearchUser: function (keyword) {
-      let users = []
+      let users = [];
       for (let key in instance.contacts) {
         if (instance.contacts[key].canSearch(keyword)) {
           users.push(instance.contacts[key])
