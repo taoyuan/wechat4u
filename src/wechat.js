@@ -1,3 +1,4 @@
+import assert from 'assert';
 import WeChatCore from './core'
 import EventEmitter from 'events'
 
@@ -47,8 +48,14 @@ class WeChat extends WeChatCore {
   }
 
   sendMsg(msg, toUserName) {
-    if (typeof msg !== 'object') {
-      return this.sendText(msg, toUserName)
+    assert(msg, '"msg" is required');
+    assert(toUserName, '"toUserName" is required');
+
+    if (typeof msg === 'string') {
+      msg = {text: msg};
+    }
+    if (typeof msg.text === 'string') {
+      return this.sendText(msg.text, toUserName)
     } else if (msg.emoticonMd5) {
       return this.sendEmoticon(msg.emoticonMd5, toUserName)
     } else {
